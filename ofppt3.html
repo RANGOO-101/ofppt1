@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinguaMaster - Your Path to Fluency</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Light Mode */
+      --primary: #1e90ff;
+      --secondary: #32cd32;
+      --accent: #ff4500;
+      --dark: #1f2a44;
+      --light: #ffffff;
+      --gray: #f5f7fa;
+      --gold: #ffd700;
+      --shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+      --bg-light: var(--gray);
+      --text-light: var(--dark);
+      --card-bg-light: var(--light);
+      --shadow-light: var(--shadow);
+    }
+
+    /* Dark Mode */
+    body.dark-mode {
+      --dark: #e0e4e8;
+      --light: #1f2a44;
+      --gray: #2a3550;
+      --bg-light: #1f2a44;
+      --text-light: #e0e4e8;
+      --card-bg-light: #2a3550;
+      --shadow-light: 0 12px 40px rgba(255, 255, 255, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-light);
+      min-height: 100vh;
+      color: var(--text-light);
+      overflow-x: hidden;
+      position: relative;
+      transition: background 0.5s ease, color 0.5s ease;
+    }
+
+    /* Animated Background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 20%, rgba(30, 144, 255, 0.25), transparent 70%),
+                  radial-gradient(circle at 80% 80%, rgba(50, 205, 50, 0.25), transparent 70%);
+      animation: bgPulse 20s ease infinite;
+      z-index: -1;
+    }
+
+    @keyframes bgPulse {
+      0% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.2); opacity: 0.9; }
+      100% { transform: scale(1); opacity: 0.6; }
+    }
+
+    /* Login Page */
+    .login-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+    }
+
+    .login-form {
+      background: var(--card-bg-light);
+      padding: 4rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+      width: 100%;
+      max-width: 540px;
+      position: relative;
+      animation: zoomIn 0.7s ease;
+    }
+
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0.85); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .login-form h2 {
+      text-align: center;
+      margin-bottom: 3rem;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 2.5rem;
+      letter-spacing: 1.5px;
+      animation: textGlow 2s ease infinite;
+    }
+
+    @keyframes textGlow {
+      0%, 100% { text-shadow: 0 0 8px rgba(30, 144, 255, 0.4); }
+      50% { text-shadow: 0 0 20px rgba(30, 144, 255, 0.7); }
+    }
+
+    .form-group {
+      margin-bottom: 2.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 1.3rem;
+      border: 2px solid #e0e4e8;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      transition: var(--transition);
+      background: var(--gray);
+      color: var(--text-light);
+    }
+
+    .form-group input:focus, .form-group select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 15px rgba(30, 144, 255, 0.3);
+      outline: none;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 1.4rem;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      background: var(--primary);
+      color: var(--light);
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s ease, height 0.6s ease;
+    }
+
+    .btn:hover::before {
+      width: 400%;
+      height: 400%;
+    }
+
+    .btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(30, 144, 255, 0.5);
+    }
+
+    .forgot-password {
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+
+    .forgot-password a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .forgot-password a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .error-message {
+      color: var(--accent);
+      text-align: center;
+      margin-top: 2rem;
+      padding: 1rem;
+      background: rgba(255, 69, 0, 0.15);
+      border-radius: 12px;
+      display: none;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    /* Main Content Page */
+    .main-container {
+      display: none;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 5rem 3rem;
+    }
+
+    .navbar {
+      background: var(--dark);
+      color: var(--light);
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+      margin-bottom: 5rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      animation: slideDown 0.6s ease;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .navbar h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 3.5rem;
+    }
+
+    .nav-links a, .nav-links .theme-toggle {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.2rem;
+      transition: var(--transition);
+      position: relative;
+      cursor: pointer;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a:hover, .nav-links .theme-toggle:hover {
+      color: var(--primary);
+    }
+
+    .welcome-section {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--light);
+      padding: 4rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+      margin-bottom: 5rem;
+      text-align: center;
+      animation: fadeInUp 0.9s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .welcome-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.25), transparent 70%);
+      animation: shine 10s infinite ease;
+    }
+
+    @keyframes shine {
+      0% { transform: translate(-20%, -20%); }
+      100% { transform: translate(20%, 20%); }
+    }
+
+    .welcome-section h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .welcome-section p {
+      font-size: 1.3rem;
+      opacity: 0.9;
+      position: relative;
+      z-index: 1;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      gap: 3rem;
+      margin-bottom: 5rem;
+    }
+
+    .progress-card {
+      background: var(--card-bg-light);
+      padding: 3rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+    }
+
+    .progress-card h3 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 2rem;
+    }
+
+    .progress-item {
+      margin-bottom: 2rem;
+    }
+
+    .progress-item span {
+      display: block;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.7rem;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 12px;
+      background: #e0e4e8;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transition: width 1.5s ease;
+    }
+
+    .course-section {
+      background: var(--card-bg-light);
+      padding: 3rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+    }
+
+    .course-section h2 {
+      color: var(--primary);
+      margin-bottom: 3rem;
+      font-size: 2.5rem;
+    }
+
+    .course-levels {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 3rem;
+    }
+
+    .level-card {
+      background: var(--gray);
+      padding: 3rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+      transition: var(--transition);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .level-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(30, 144, 255, 0.2));
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .level-card:hover::before {
+      opacity: 1;
+    }
+
+    .level-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    }
+
+    .level-card h3 {
+      color: var(--text-light);
+      margin-bottom: 1.2rem;
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+
+    .level-card p {
+      color: #555;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    .practice-section {
+      background: var(--card-bg-light);
+      padding: 3rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+      position: relative;
+    }
+
+    .practice-section h2 {
+      color: var(--primary);
+      margin-bottom: 3rem;
+      font-size: 2.5rem;
+    }
+
+    .calendar {
+      background: var(--gray);
+      padding: 3rem;
+      border-radius: var(--border-radius);
+      box-shadow: inset 0 3px 15px rgba(0, 0, 0, 0.05);
+      margin-bottom: 3rem;
+    }
+
+    .calendar input[type="datetime-local"] {
+      padding: 1.3rem;
+      border: 2px solid #e0e4e8;
+      border-radius: 12px;
+      margin: 1.5rem 0;
+      width: 100%;
+      max-width: 340px;
+      font-size: 1.1rem;
+    }
+
+    .tutor-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 3rem;
+    }
+
+    .tutor-card {
+      background: var(--gray);
+      padding: 3rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .tutor-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+    }
+
+    .tutor-card h4 {
+      color: var(--text-light);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .tutor-card p {
+      color: #666;
+      font-size: 1rem;
+    }
+
+    .tutor-card .rating {
+      color: var(--gold);
+      margin: 1rem 0;
+      font-size: 1.5rem;
+    }
+
+    .tutor-card .btn {
+      padding: 1.1rem;
+      font-size: 1.1rem;
+      margin-top: 1.5rem;
+      background: var(--secondary);
+    }
+
+    .tutor-card .btn:hover {
+      box-shadow: 0 10px 30px rgba(50, 205, 50, 0.5);
+    }
+
+    /* Profile Section */
+    .profile-section {
+      display: none;
+      max-width: 1000px;
+      margin: 5rem auto;
+      padding: 3rem;
+      background: var(--card-bg-light);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+      position: relative;
+    }
+
+    .profile-section h2 {
+      color: var(--primary);
+      margin-bottom: 3rem;
+      font-size: 2.5rem;
+    }
+
+    .profile-form .form-group {
+      margin-bottom: 2.5rem;
+    }
+
+    .profile-form .btn {
+      background: var(--accent);
+    }
+
+    .profile-form .btn:hover {
+      box-shadow: 0 10px 30px rgba(255, 69, 0, 0.5);
+    }
+
+    /* Back Button */
+    .back-btn {
+      position: absolute;
+      top: 2rem;
+      left: 2rem;
+      background: var(--primary);
+      color: var(--light);
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      z-index: 10;
+    }
+
+    .back-btn:hover {
+      background: var(--secondary);
+      transform: translateX(-5px);
+      box-shadow: 0 8px 25px rgba(50, 205, 50, 0.5);
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    .modal-content {
+      background: var(--card-bg-light);
+      padding: 3rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+      max-width: 600px;
+      width: 90%;
+      animation: modalPop 0.5s ease;
+    }
+
+    @keyframes modalPop {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .modal-content h3 {
+      color: var(--primary);
+      margin-bottom: 2rem;
+      font-size: 2rem;
+    }
+
+    .modal-content p {
+      color: #555;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .modal-content .btn {
+      background: var(--secondary);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .dashboard {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .main-container, .profile-section {
+        padding: 2rem;
+      }
+      .navbar {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 1.5rem 2rem;
+      }
+      .course-levels, .tutor-list {
+        grid-template-columns: 1fr;
+      }
+      .login-form {
+        padding: 3rem;
+      }
+      .welcome-section {
+        padding: 3rem;
+      }
+      .back-btn {
+        top: 1rem;
+        left: 1rem;
+        padding: 0.8rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Login Page -->
+  <div class="login-container" id="login-page">
+    <form class="login-form" id="login-form">
+      <h2>LinguaMaster</h2>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="••••••••" required>
+      </div>
+      <button type="submit" class="btn">Sign In</button>
+      <div class="forgot-password">
+        <a href="#" id="forgot-password-link">Forgot Password?</a>
+      </div>
+      <div class="error-message" id="error-message">Oops! Wrong credentials. Try: test@example.com / password123</div>
+    </form>
+  </div>
+
+  <!-- Main Content Page -->
+  <div class="main-container" id="main-page">
+    <nav class="navbar">
+      <h1>LinguaMaster</h1>
+      <div class="nav-links">
+        <a href="#" id="profile-link">Profile</a>
+        <span class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></span>
+        <a href="#" id="logout-link">Sign Out</a>
+      </div>
+    </nav>
+
+    <section class="welcome-section">
+      <h2>Welcome, Language Maestro!</h2>
+      <p>Unleash your potential with world-class lessons and expert tutors.</p>
+    </section>
+
+    <div class="dashboard">
+      <div class="progress-card">
+        <h3>Your Progress</h3>
+        <div class="progress-item">
+          <span>A1 - Beginner (80%)</span>
+          <div class="progress-bar"><div class="progress-bar-fill" style="width: 80%;"></div></div>
+        </div>
+        <div class="progress-item">
+          <span>A2 - Elementary (50%)</span>
+          <div class="progress-bar"><div class="progress-bar-fill" style="width: 50%;"></div></div>
+        </div>
+        <div class="progress-item">
+          <span>B1 - Intermediate (20%)</span>
+          <div class="progress-bar"><div class="progress-bar-fill" style="width: 20%;"></div></div>
+        </div>
+      </div>
+
+      <div class="course-section">
+        <h2>Course Levels</h2>
+        <div class="course-levels">
+          <div class="level-card" onclick="showLessonPreview('A1')">
+            <h3>A1 - Beginner</h3>
+            <p>Start with essential phrases and vocabulary.</p>
+            <p><strong>Lessons:</strong> 10 | <strong>Videos:</strong> 5 | <strong>Quizzes:</strong> 3</p>
+          </div>
+          <div class="level-card" onclick="showLessonPreview('A2')">
+            <h3>A2 - Elementary</h3>
+            <p>Learn simple conversations and expressions.</p>
+            <p><strong>Lessons:</strong> 12 | <strong>Videos:</strong> 6 | <strong>Quizzes:</strong> 4</p>
+          </div>
+          <div class="level-card" onclick="showLessonPreview('B1')">
+            <h3>B1 - Intermediate</h3>
+            <p>Master daily communication skills.</p>
+            <p><strong>Lessons:</strong> 15 | <strong>Videos:</strong> 8 | <strong>Quizzes:</strong> 5</p>
+          </div>
+          <div class="level-card" onclick="showLessonPreview('B2')">
+            <h3>B2 - Upper Intermediate</h3>
+            <p>Engage in complex discussions.</p>
+            <p><strong>Lessons:</strong> 15 | <strong>Videos:</strong> 8 | <strong>Quizzes:</strong> 5</p>
+          </div>
+          <div class="level-card" onclick="showLessonPreview('C1')">
+            <h3>C1 - Advanced</h3>
+            <p>Achieve fluency in diverse scenarios.</p>
+            <p><strong>Lessons:</strong> 20 | <strong>Videos:</strong> 10 | <strong>Quizzes:</strong> 6</p>
+          </div>
+          <div class="level-card" onclick="showLessonPreview('C2')">
+            <h3>C2 - Proficiency</h3>
+            <p>Attain near-native mastery.</p>
+            <p><strong>Lessons:</strong> 20 | <strong>Videos:</strong> 10 | <strong>Quizzes:</strong> 6</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="practice-section">
+      <h2>Speaking Practice</h2>
+      <div class="calendar">
+        <h3>Schedule Your Session</h3>
+        <p>Book a time to practice with our expert tutors:</p>
+        <input type="datetime-local" id="session-date">
+        <button class="btn" onclick="scheduleSession()">Book Session</button>
+      </div>
+      <div class="tutor-list">
+        <div class="tutor-card">
+          <h4>John Doe</h4>
+          <p>English | 5+ Years</p>
+          <div class="rating">★★★★★</div>
+          <button class="btn" onclick="connectTutor('John Doe')">Connect</button>
+        </div>
+        <div class="tutor-card">
+          <h4>Jane Smith</h4>
+          <p>French | 3+ Years</p>
+          <div class="rating">★★★★☆</div>
+          <button class="btn" onclick="connectTutor('Jane Smith')">Connect</button>
+        </div>
+        <div class="tutor-card">
+          <h4>Maria Lopez</h4>
+          <p>Spanish | 4+ Years</p>
+          <div class="rating">★★★★★</div>
+          <button class="btn" onclick="connectTutor('Maria Lopez')">Connect</button>
+        </div>
+        <div class="tutor-card">
+          <h4>Ahmed Hassan</h4>
+          <p>Arabic | 6+ Years</p>
+          <div class="rating">★★★★★</div>
+          <button class="btn" onclick="connectTutor('Ahmed Hassan')">Connect</button>
+        </div>
+        <div class="tutor-card">
+          <h4>Sofia Rossi</h4>
+          <p>Italian | 4+ Years</p>
+          <div class="rating">★★★★☆</div>
+          <button class="btn" onclick="connectTutor('Sofia Rossi')">Connect</button>
+        </div>
+        <div class="tutor-card">
+          <h4>Hans Müller</h4>
+          <p>German | 5+ Years</p>
+          <div class="rating">★★★★★</div>
+          <button class="btn" onclick="connectTutor('Hans Müller')">Connect</button>
+        </div>
+        <div class="tutor-card">
+          <h4>Yuki Tanaka</h4>
+          <p>Japanese | 3+ Years</p>
+          <div class="rating">★★★★☆</div>
+          <button class="btn" onclick="connectTutor('Yuki Tanaka')">Connect</button>
+        </div>
+        <div class="tutor-card">
+          <h4>Li Wei</h4>
+          <p>Mandarin | 6+ Years</p>
+          <div class="rating">★★★★★</div>
+          <button class="btn" onclick="connectTutor('Li Wei')">Connect</button>
+        </div>
+        <div class="tutor-card">
+          <h4>Olga Petrova</h4>
+          <p>Russian | 4+ Years</p>
+          <div class="rating">★★★★★</div>
+          <button class="btn" onclick="connectTutor('Olga Petrova')">Connect</button>
+        </div>
+        <div class="tutor-card">
+          <h4>Carlos Mendes</h4>
+          <p>Portuguese | 5+ Years</p>
+          <div class="rating">★★★★☆</div>
+          <button class="btn" onclick="connectTutor('Carlos Mendes')">Connect</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Profile Section -->
+  <div class="profile-section" id="profile-page">
+    <div class="back-btn" onclick="goBack('main')"><i class="fas fa-arrow-left"></i> Back</div>
+    <h2>Your Profile</h2>
+    <form class="profile-form">
+      <div class="form-group">
+        <label for="profile-name">Full Name</label>
+        <input type="text" id="profile-name" value="John Doe" required>
+      </div>
+      <div class="form-group">
+        <label for="profile-email">Email Address</label>
+        <input type="email" id="profile-email" value="test@example.com" readonly>
+      </div>
+      <div class="form-group">
+        <label for="profile-language">Preferred Language</label>
+        <select id="profile-language">
+          <option value="english">English</option>
+          <option value="french">French</option>
+          <option value="spanish">Spanish</option>
+          <option value="arabic">Arabic</option>
+          <option value="italian">Italian</option>
+          <option value="german">German</option>
+          <option value="japanese">Japanese</option>
+          <option value="mandarin">Mandarin</option>
+          <option value="russian">Russian</option>
+          <option value="portuguese">Portuguese</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="profile-goal">Learning Goal</label>
+        <input type="text" id="profile-goal" value="Become fluent in 6 months" required>
+      </div>
+      <button type="button" class="btn" onclick="saveProfile()">Save Changes</button>
+    </form>
+    <h3>Your Progress</h3>
+    <div class="progress-item">
+      <span>A1 - Beginner (80%)</span>
+      <div class="progress-bar"><div class="progress-bar-fill" style="width: 80%;"></div></div>
+    </div>
+    <div class="progress-item">
+      <span>A2 - Elementary (50%)</span>
+      <div class="progress-bar"><div class="progress-bar-fill" style="width: 50%;"></div></div>
+    </div>
+    <div class="progress-item">
+      <span>B1 - Intermediate (20%)</span>
+      <div class="progress-bar"><div class="progress-bar-fill" style="width: 20%;"></div></div>
+    </div>
+  </div>
+
+  <!-- Lesson Preview Modal -->
+  <div class="modal" id="lesson-modal">
+    <div class="modal-content">
+      <h3 id="modal-title"></h3>
+      <p id="modal-description"></p>
+      <button class="btn" onclick="startLesson(document.getElementById('modal-title').textContent.split(' - ')[0])">Start Now</button>
+    </div>
+  </div>
+
+  <script>
+    // Page References
+    const loginPage = document.getElementById('login-page');
+    const mainPage = document.getElementById('main-page');
+    const profilePage = document.getElementById('profile-page');
+    const lessonModal = document.getElementById('lesson-modal');
+    let previousPage = 'login';
+
+    // Ensure only login page is visible initially
+    window.onload = function() {
+      loginPage.style.display = 'flex';
+      mainPage.style.display = 'none';
+      profilePage.style.display = 'none';
+      lessonModal.style.display = 'none';
+    };
+
+    // Simulated Authentication
+    document.getElementById('login-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const errorMsg = document.getElementById('error-message');
+
+      if (email === 'test@example.com' && password === 'password123') {
+        errorMsg.style.display = 'none';
+        transitionPage(loginPage, mainPage);
+        previousPage = 'login';
+      } else {
+        errorMsg.style.display = 'block';
+        errorMsg.textContent = 'Oops! Wrong credentials. Try: test@example.com / password123';
+      }
+    });
+
+    // Navigation
+    document.getElementById('profile-link').addEventListener('click', (e) => {
+      e.preventDefault();
+      transitionPage(mainPage, profilePage);
+      previousPage = 'main';
+    });
+
+    document.getElementById('logout-link').addEventListener('click', (e) => {
+      e.preventDefault();
+      const currentPage = mainPage.style.display === 'block' ? mainPage : profilePage;
+      transitionPage(currentPage, loginPage);
+      document.getElementById('login-form').reset();
+      previousPage = 'login';
+    });
+
+    // Theme Toggle
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const icon = document.querySelector('#theme-toggle i');
+      icon.classList.toggle('fa-moon');
+      icon.classList.toggle('fa-sun');
+    });
+
+    // Forgot Password
+    document.getElementById('forgot-password-link').addEventListener('click', (e) => {
+      e.preventDefault();
+      alert('A password reset link has been sent to your email. Please check your inbox!');
+    });
+
+    // Interactive Functions
+    function showLessonPreview(level) {
+      const lessons = {
+        'A1': { title: 'A1 - Beginner', desc: 'Start with the basics: greetings, numbers, and simple phrases.' },
+        'A2': { title: 'A2 - Elementary', desc: 'Learn to form sentences and engage in basic conversations.' },
+        'B1': { title: 'B1 - Intermediate', desc: 'Dive into everyday topics like travel and work.' },
+        'B2': { title: 'B2 - Upper Intermediate', desc: 'Master complex grammar and discussions.' },
+        'C1': { title: 'C1 - Advanced', desc: 'Refine your skills for professional and academic fluency.' },
+        'C2': { title: 'C2 - Proficiency', desc: 'Achieve near-native fluency with advanced content.' }
+      };
+      document.getElementById('modal-title').textContent = lessons[level].title;
+      document.getElementById('modal-description').textContent = lessons[level].desc;
+      lessonModal.style.display = 'flex';
+    }
+
+    function startLesson(level) {
+      lessonModal.style.display = 'none';
+      alert(`Welcome to ${level}! Your journey begins now—immerse yourself in the lessons!`);
+    }
+
+    function scheduleSession() {
+      const date = document.getElementById('session-date').value;
+      if (date) {
+        const formattedDate = new Date(date).toLocaleString('en-US', {
+          weekday: 'long', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric'
+        });
+        alert(`Success! Your session is booked for ${formattedDate}. A confirmation email is on its way!`);
+      } else {
+        alert('Please select a date and time to book your speaking session.');
+      }
+    }
+
+    function connectTutor(name) {
+      alert(`Connecting with ${name}... A session link will be sent to your email shortly!`);
+    }
+
+    function saveProfile() {
+      const name = document.getElementById('profile-name').value.trim();
+      const language = document.getElementById('profile-language').value;
+      const goal = document.getElementById('profile-goal').value.trim();
+      alert(`Profile Updated!\nName: ${name}\nPreferred Language: ${language}\nGoal: ${goal}`);
+    }
+
+    // Page Transition Helper
+    function transitionPage(fromPage, toPage) {
+      fromPage.style.transition = 'opacity 0.6s ease';
+      fromPage.style.opacity = '0';
+      setTimeout(() => {
+        fromPage.style.display = 'none';
+        toPage.style.display = toPage === loginPage ? 'flex' : 'block';
+        toPage.style.opacity = '0';
+        toPage.style.transition = 'opacity 0.6s ease';
+        setTimeout(() => {
+          toPage.style.opacity = '1';
+          window.scrollTo(0, 0);
+        }, 50);
+      }, 600);
+    }
+
+    // Back Navigation
+    function goBack(targetPage) {
+      const currentPage = profilePage;
+      const target = targetPage === 'main' ? mainPage : loginPage;
+      transitionPage(currentPage, target);
+      previousPage = targetPage;
+    }
+
+    // Close Modal on Outside Click
+    lessonModal.addEventListener('click', (e) => {
+      if (e.target === lessonModal) {
+        lessonModal.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
