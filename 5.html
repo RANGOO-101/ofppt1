@@ -1,0 +1,2135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinguaMaster Pro - Your Premium Language Journey</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    /* CSS Variables */
+    :root {
+      --primary: #3a86ff;
+      --primary-dark: #0056d2;
+      --primary-light: #e0ebff;
+      --secondary: #4cc9f0;
+      --accent: #f72585;
+      --success: #4ecdc4;
+      --warning: #ff9f1c;
+      --danger: #ff595e;
+      --dark: #121e2d;
+      --dark-gray: #344966;
+      --medium-gray: #718096;
+      --light-gray: #cbd5e0;
+      --light: #ffffff;
+      --muted: #f8f9fa;
+      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+      --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
+      --radius-sm: 6px;
+      --radius: 12px;
+      --radius-lg: 20px;
+      --transition: all 0.3s ease;
+      --content-width: 1280px;
+    }
+
+    body.dark-mode {
+      --dark: #e2e8f0;
+      --dark-gray: #cbd5e0;
+      --medium-gray: #a0aec0;
+      --light-gray: #4a5568;
+      --light: #121e2d;
+      --muted: #1a2b40;
+      --primary-light: #1a2b40;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      min-height: 100vh;
+      line-height: 1.6;
+      transition: var(--transition);
+    }
+
+    .container {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      gap: 0.5rem;
+    }
+
+    .btn-icon {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--light);
+      box-shadow: 0 4px 6px rgba(58, 134, 255, 0.2);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 7px 14px rgba(58, 134, 255, 0.3);
+    }
+
+    .btn-success {
+      background: var(--success);
+      color: var(--light);
+      box-shadow: 0 4px 6px rgba(78, 205, 196, 0.2);
+    }
+
+    .btn-success:hover {
+      background: #3dbeb5;
+      transform: translateY(-3px);
+      box-shadow: 0 7px 14px rgba(78, 205, 196, 0.3);
+    }
+
+    .btn-danger {
+      background: var(--danger);
+      color: var(--light);
+      box-shadow: 0 4px 6px rgba(255, 89, 94, 0.2);
+    }
+
+    .btn-danger:hover {
+      background: #ff4146;
+      transform: translateY(-3px);
+      box-shadow: 0 7px 14px rgba(255, 89, 94, 0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary-light);
+      transform: translateY(-3px);
+    }
+
+    .btn-block {
+      width: 100%;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Login Page */
+    .login-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #4cc9f0 0%, #3a86ff 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .login-wrapper::before {
+      content: '';
+      position: absolute;
+      width: 60vmax;
+      height: 60vmax;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.07);
+      top: -30vmax;
+      right: -30vmax;
+      animation: pulse 10s infinite ease-in-out;
+    }
+
+    .login-wrapper::after {
+      content: '';
+      position: absolute;
+      width: 80vmax;
+      height: 80vmax;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      bottom: -40vmax;
+      left: -40vmax;
+      animation: pulse 12s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .login-card {
+      background: var(--light);
+      padding: 3rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      width: 100%;
+      max-width: 480px;
+      animation: fadeInUp 0.6s ease-out;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    .login-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .login-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .logo-icon {
+      font-size: 2.5rem;
+      margin-right: 0.5rem;
+    }
+
+    .login-logo h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .login-tagline {
+      color: var(--medium-gray);
+      font-size: 1.1rem;
+      font-weight: 400;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+      color: var(--dark-gray);
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border: 1.5px solid var(--light-gray);
+      border-radius: var(--radius-sm);
+      font-size: 1rem;
+      transition: var(--transition);
+      background: var(--light);
+      color: var(--dark);
+    }
+
+    .form-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.15);
+      outline: none;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .input-icon {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--medium-gray);
+    }
+
+    .password-toggle {
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .password-toggle:hover {
+      color: var(--primary);
+    }
+
+    .form-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .remember-me {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+
+    .custom-checkbox {
+      width: 18px;
+      height: 18px;
+      border: 1.5px solid var(--medium-gray);
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      color: transparent;
+    }
+
+    .remember-me input:checked + .custom-checkbox {
+      background-color: var(--primary);
+      border-color: var(--primary);
+      color: var(--light);
+    }
+
+    .remember-me input {
+      display: none;
+    }
+
+    .remember-me label {
+      font-size: 0.9rem;
+      color: var(--medium-gray);
+      cursor: pointer;
+    }
+
+    .forgot-password a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .forgot-password a:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      margin: 1.5rem 0;
+      color: var(--medium-gray);
+      font-size: 0.9rem;
+    }
+
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--light-gray);
+    }
+
+    .divider::before {
+      margin-right: 1rem;
+    }
+
+    .divider::after {
+      margin-left: 1rem;
+    }
+
+    .social-login {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .social-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background: var(--muted);
+      color: var(--dark-gray);
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
+
+    .social-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .social-btn.google:hover {
+      background: #DB4437;
+      color: white;
+    }
+
+    .social-btn.facebook:hover {
+      background: #4267B2;
+      color: white;
+    }
+
+    .social-btn.apple:hover {
+      background: #000000;
+      color: white;
+    }
+
+    .register-link {
+      font-size: 0.95rem;
+      color: var(--medium-gray);
+      margin-top: 1.5rem;
+    }
+
+    .register-link a {
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .register-link a:hover {
+      text-decoration: underline;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: var(--light);
+      padding: 1rem 0;
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: padding 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      padding: 0.75rem 0;
+    }
+
+    .navbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .navbar-brand h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--primary);
+      font-weight: 700;
+      transition: var(--transition);
+    }
+
+    .navbar-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link, .nav-action {
+      color: var(--dark-gray);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 0.5rem;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+
+    .nav-link:hover, .nav-action:hover {
+      color: var(--primary);
+    }
+
+    .nav-link.active {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 10px;
+    }
+
+    .nav-icon {
+      font-size: 1.2rem;
+    }
+
+    .user-menu {
+      position: relative;
+    }
+
+    .user-avatar {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background: var(--primary-light);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 2px solid transparent;
+    }
+
+    .user-avatar:hover {
+      border-color: var(--primary);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      min-width: 220px;
+      background: var(--light);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow);
+      padding: 0.75rem 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+
+    .dropdown-menu.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1.25rem;
+      color: var(--dark-gray);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+
+    .dropdown-item:hover {
+      background: var(--muted);
+      color: var(--primary);
+    }
+
+    .dropdown-divider {
+      height: 1px;
+      background: var(--light-gray);
+      margin: 0.5rem 0;
+    }
+
+    .theme-toggle {
+      display: flex;
+      align-items: center;
+      padding: 0.75rem 1.25rem;
+      gap: 0.75rem;
+      color: var(--dark-gray);
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 0.95rem;
+    }
+
+    .theme-toggle:hover {
+      background: var(--muted);
+      color: var(--primary);
+    }
+
+    .toggle-switch {
+      width: 44px;
+      height: 22px;
+      background: var(--light-gray);
+      border-radius: 30px;
+      padding: 2px;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .toggle-switch::after {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--light);
+      left: 2px;
+      transition: var(--transition);
+    }
+
+    body.dark-mode .toggle-switch {
+      background: var(--primary);
+    }
+
+    body.dark-mode .toggle-switch::after {
+      left: calc(100% - 20px);
+    }
+
+    /* Main Content */
+    .main-wrapper {
+      padding: 2rem 0 4rem;
+    }
+
+    /* Welcome Banner */
+    .welcome-banner {
+      background: linear-gradient(45deg, var(--primary-light), var(--primary));
+      padding: 3rem 2rem;
+      border-radius: var(--radius-lg);
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      color: var(--light);
+    }
+
+    .welcome-content {
+      max-width: 650px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .welcome-banner h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .welcome-banner p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      opacity: 0.9;
+    }
+
+    .welcome-banner .btn {
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .welcome-banner .btn-light {
+      background: var(--light);
+      color: var(--primary);
+    }
+
+    .welcome-banner .btn-light:hover {
+      background: rgba(255, 255, 255, 0.9);
+      transform: translateY(-3px);
+    }
+
+    .welcome-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .welcome-decoration {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      right: -100px;
+      top: -100px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.07);
+      animation: rotate 15s infinite linear;
+    }
+
+    .welcome-decoration::before {
+      content: '';
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      right: -50px;
+      bottom: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Dashboard */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    /* Progress Widget */
+    .dashboard-widget {
+      background: var(--light);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: var(--transition);
+      height: 100%;
+    }
+
+    .dashboard-widget:hover {
+      box-shadow: var(--shadow-lg);
+    }
+
+    .widget-header {
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--light-gray);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .widget-header h2 {
+      color: var(--dark);
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .widget-header-icon {
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary-light);
+      color: var(--primary);
+      border-radius: 8px;
+      font-size: 0.95rem;
+    }
+
+    .widget-body {
+      padding: 2rem;
+    }
+
+    .progress-stats {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .progress-stat {
+      flex: 1;
+      min-width: 120px;
+      background: var(--muted);
+      padding: 1.25rem;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+
+    .progress-stat:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .stat-value {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: var(--medium-gray);
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .stat-trend {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .stat-trend.up {
+      color: var(--success);
+    }
+
+    .stat-trend.down {
+      color: var(--danger);
+    }
+
+    .progress-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .progress-title {
+      font-weight: 600;
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .progress-level {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-right: 0.5rem;
+    }
+
+    .level-a1 {
+      background: rgba(58, 134, 255, 0.15);
+      color: var(--primary);
+    }
+
+    .level-a2 {
+      background: rgba(78, 205, 196, 0.15);
+      color: var(--success);
+    }
+
+    .level-b1 {
+      background: rgba(255, 159, 28, 0.15);
+      color: var(--warning);
+    }
+
+    .progress-percentage {
+      font-weight: 700;
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .progress-bar {
+      background: var(--light-gray);
+      height: 8px;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      transition: width 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .fill-a1 {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+
+    .fill-a2 {
+      background: linear-gradient(90deg, var(--success), #a0eedd);
+    }
+
+    .fill-b1 {
+      background: linear-gradient(90deg, var(--warning), #ffd166);
+    }
+
+    .achievement-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 2rem;
+      background: var(--muted);
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      border-left: 4px solid var(--primary);
+    }
+
+    .badge-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary-light);
+      color: var(--primary);
+      border-radius: 50%;
+      font-size: 1.2rem;
+    }
+
+    .badge-info h4 {
+      color: var(--dark);
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .badge-info p {
+      color: var(--medium-gray);
+      font-size: 0.9rem;
+    }
+
+    /* Courses Widget */
+    .courses-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .course-filters {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .course-filter {
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      color: var(--medium-gray);
+    }
+
+    .course-filter:hover {
+      color: var(--primary);
+    }
+
+    .course-filter.active {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .course-card {
+      background: var(--light);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      transition: var(--transition);
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .course-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow);
+    }
+
+    .course-image {
+      position: relative;
+      height: 160px;
+      overflow: hidden;
+    }
+
+    .course-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1s ease;
+    }
+
+    .course-card:hover .course-image img {
+      transform: scale(1.05);
+    }
+
+    .course-level {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      z-index: 10;
+    }
+
+    .course-difficulty {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 30px;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    .course-content {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .course-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .course-author {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--medium-gray);
+    }
+
+    .course-rating {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.85rem;
+      color: var(--medium-gray);
+    }
+
+    .course-rating i {
+      color: #FFD700;
+    }
+
+    .course-title {
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+      color: var(--dark);
+    }
+
+    .course-description {
+      color: var(--medium-gray);
+      font-size: 0.9rem;
+      margin-bottom: 1.25rem;
+      line-height: 1.6;
+    }
+
+    .course-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+    }
+
+    .course-stats {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: var(--medium-gray);
+      font-size: 0.85rem;
+    }
+
+    .course-stat {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .course-price {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 1.1rem;
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: 0;
+      right: 1.5rem;
+      background: var(--primary);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.75rem;
+      font-weight: 600;
+      z-index: 10;
+    }
+
+    /* Practice Section */
+    .practice-widget {
+      background: var(--light);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .practice-header h2 {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .schedule-form {
+      margin-bottom: 2rem;
+    }
+
+    .schedule-form label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--dark-gray);
+    }
+
+    .schedule-input {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border: 1.5px solid var(--light-gray);
+      border-radius: var(--radius-sm);
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+
+    .schedule-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.15);
+      outline: none;
+    }
+
+    .tutor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .tutor-card {
+      background: var(--light);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      padding: 1.5rem;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .tutor-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .tutor-name {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+
+    .tutor-details {
+      color: var(--medium-gray);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .tutor-rating {
+      display: flex;
+      justify-content: center;
+      gap: 0.25rem;
+      margin-bottom: 1rem;
+      color: #FFD700;
+    }
+
+    /* Profile Section */
+    .profile-wrapper {
+      max-width: 800px;
+      margin: 2rem auto;
+      background: var(--light);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2rem;
+    }
+
+    .profile-header h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .profile-form .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .profile-actions {
+      margin-top: 2rem;
+    }
+
+    .settings-section {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--light-gray);
+    }
+
+    .setting-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .setting-label {
+      font-weight: 600;
+      color: var(--dark-gray);
+    }
+
+    /* Rewards Section */
+    .rewards-widget {
+      background: var(--light);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .rewards-header h2 {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .rewards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .reward-card {
+      background: var(--muted);
+      border-radius: var(--radius-sm);
+      padding: 1.5rem;
+      text-align: center;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .reward-card.unlocked {
+      background: linear-gradient(135deg, var(--success), var(--primary));
+      color: var(--light);
+    }
+
+    .reward-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .reward-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .reward-title {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+
+    .reward-desc {
+      color: var(--medium-gray);
+      font-size: 0.9rem;
+    }
+
+    /* Modal */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+
+    .modal-content {
+      background: var(--light);
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+      max-width: 600px;
+      width: 90%;
+      animation: zoomIn 0.4s ease-out;
+      text-align: center;
+    }
+
+    .modal-header {
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-title {
+      font-size: 1.5rem;
+      color: var(--dark);
+    }
+
+    .modal-body {
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-desc {
+      color: var(--medium-gray);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .modal-quiz {
+      margin: 1.5rem 0;
+    }
+
+    .quiz-option {
+      background: var(--muted);
+      padding: 0.75rem;
+      border-radius: var(--radius-sm);
+      margin-bottom: 0.75rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .quiz-option:hover {
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .quiz-option.selected {
+      background: var(--primary);
+      color: var(--light);
+    }
+
+    .modal-footer {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Animations */
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+      .welcome-content {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar .container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .course-grid, .tutor-grid, .rewards-grid {
+        grid-template-columns: 1fr;
+      }
+      .welcome-banner {
+        padding: 2rem;
+      }
+      .welcome-banner h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Login Page -->
+  <div class="login-wrapper" id="login-page">
+    <div class="login-card">
+      <div class="login-header">
+        <div class="login-logo">
+          <span class="logo-icon"><i class="fas fa-language"></i></span>
+          <h1>LinguaMaster Pro</h1>
+        </div>
+        <p class="login-tagline">Unlock your language potential</p>
+      </div>
+      <form id="login-form">
+        <div class="form-group input-wrapper">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" class="form-input" placeholder="Enter your email" required>
+          <span class="input-icon"><i class="fas fa-envelope"></i></span>
+        </div>
+        <div class="form-group input-wrapper">
+          <label for="password">Password</label>
+          <input type="password" id="password" class="form-input" placeholder="Enter your password" required>
+          <span class="input-icon password-toggle" onclick="togglePassword()"><i class="fas fa-eye"></i></span>
+        </div>
+        <div class="form-options">
+          <div class="remember-me">
+            <input type="checkbox" id="remember">
+            <span class="custom-checkbox"><i class="fas fa-check"></i></span>
+            <label for="remember">Remember me</label>
+          </div>
+          <div class="forgot-password">
+            <a href="#" id="forgot-password-link">Forgot Password?</a>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+        <div class="divider">or continue with</div>
+        <div class="social-login">
+          <a href="#" class="social-btn google"><i class="fab fa-google"></i></a>
+          <a href="#" class="social-btn facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-btn apple"><i class="fab fa-apple"></i></a>
+        </div>
+        <p class="register-link">Don't have an account? <a href="#">Register</a></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-wrapper hidden" id="main-page">
+    <nav class="navbar" id="navbar">
+      <div class="container">
+        <a href="#" class="navbar-brand">
+          <h1>LinguaMaster Pro</h1>
+        </a>
+        <div class="navbar-links">
+          <div class="nav-item">
+            <a href="#" class="nav-link active">Dashboard</a>
+          </div>
+          <div class="nav-item">
+            <a href="#" class="nav-link">Courses</a>
+          </div>
+          <div class="nav-item">
+            <a href="#" class="nav-link">Practice</a>
+          </div>
+          <div class="nav-item user-menu">
+            <div class="user-avatar" onclick="toggleUserMenu()">JD</div>
+            <div class="dropdown-menu" id="user-dropdown">
+              <a href="#" class="dropdown-item" onclick="transitionPage(mainPage, profilePage)"><i class="fas fa-user"></i> Profile</a>
+              <a href="#" class="dropdown-item" onclick="transitionPage(mainPage, settingsPage)"><i class="fas fa-cog"></i> Settings</a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item" id="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+          </div>
+          <div class="nav-action theme-toggle" id="theme-toggle">
+            <span>Theme</span>
+            <div class="toggle-switch"></div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <section class="welcome-banner">
+        <div class="welcome-content">
+          <h2>Welcome Back, [User Name]!</h2>
+          <p>Explore new languages, track your progress, and master your skills with LinguaMaster Pro.</p>
+          <div class="welcome-actions">
+            <a href="#" class="btn btn-primary" onclick="openCourseModal('a1')">Start Learning</a>
+            <a href="#" class="btn btn-light">View Progress</a>
+          </div>
+        </div>
+        <div class="welcome-decoration"></div>
+      </section>
+
+      <section class="dashboard-grid">
+        <div class="dashboard-widget">
+          <div class="widget-header">
+            <h2><span class="widget-header-icon"><i class="fas fa-chart-line"></i></span> Progress</h2>
+            <a href="#" class="btn btn-outline btn-sm">View Details</a>
+          </div>
+          <div class="widget-body">
+            <div class="progress-stats">
+              <div class="progress-stat">
+                <span class="stat-value">25</span>
+                <span class="stat-label">Lessons Completed <span class="stat-trend up"><i class="fas fa-arrow-up"></i> 5%</span></span>
+              </div>
+              <div class="progress-stat">
+                <span class="stat-value">12h</span>
+                <span class="stat-label">Time Spent <span class="stat-trend up"><i class="fas fa-arrow-up"></i> 10%</span></span>
+              </div>
+              <div class="progress-stat">
+                <span class="stat-value">85%</span>
+                <span class="stat-label">Overall Progress <span class="stat-trend up"><i class="fas fa-arrow-up"></i> 3%</span></span>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-header">
+                <span class="progress-title"><span class="progress-level level-a1">A1</span> Beginner</span>
+                <span class="progress-percentage">80% <i class="fas fa-check-circle"></i></span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill fill-a1" style="width: 80%"></div></div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-header">
+                <span class="progress-title"><span class="progress-level level-a2">A2</span> Elementary</span>
+                <span class="progress-percentage">50% <i class="fas fa-clock"></i></span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill fill-a2" style="width: 50%"></div></div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-header">
+                <span class="progress-title"><span class="progress-level level-b1">B1</span> Intermediate</span>
+                <span class="progress-percentage">20% <i class="fas fa-play"></i></span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill fill-b1" style="width: 20%"></div></div>
+            </div>
+            <div class="achievement-badge">
+              <span class="badge-icon"><i class="fas fa-trophy"></i></span>
+              <div class="badge-info">
+                <h4>Congrats!</h4>
+                <p>You’ve completed A1 level. Unlock new rewards!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-widget">
+          <div class="widget-header">
+            <h2><span class="widget-header-icon"><i class="fas fa-book"></i></span> Courses</h2>
+            <div class="course-filters">
+              <span class="course-filter active" onclick="filterCourses('all')">All</span>
+              <span class="course-filter" onclick="filterCourses('beginner')">Beginner</span>
+              <span class="course-filter" onclick="filterCourses('intermediate')">Intermediate</span>
+              <span class="course-filter" onclick="filterCourses('advanced')">Advanced</span>
+            </div>
+          </div>
+          <div class="widget-body">
+            <div class="course-grid" id="course-grid">
+              <div class="course-card" data-level="a1">
+                <div class="course-image">
+                  <img src="https://via.placeholder.com/300x160" alt="Course Image">
+                  <span class="course-level level-a1">A1</span>
+                  <span class="course-difficulty">Easy <i class="fas fa-star"></i></span>
+                  <span class="featured-badge">Featured</span>
+                </div>
+                <div class="course-content">
+                  <div class="course-meta">
+                    <span class="course-author"><i class="fas fa-user"></i> John Doe</span>
+                    <span class="course-rating"><i class="fas fa-star"></i> 4.8 (120)</span>
+                  </div>
+                  <h3 class="course-title">Beginner English</h3>
+                  <p class="course-description">Master basic English vocabulary and phrases with interactive lessons.</p>
+                  <div class="course-footer">
+                    <div class="course-stats">
+                      <span class="course-stat"><i class="fas fa-video"></i> 10</span>
+                      <span class="course-stat"><i class="fas fa-question-circle"></i> 5</span>
+                    </div>
+                    <span class="course-price">$19.99</span>
+                  </div>
+                </div>
+              </div>
+              <div class="course-card" data-level="a2">
+                <div class="course-image">
+                  <img src="https://via.placeholder.com/300x160" alt="Course Image">
+                  <span class="course-level level-a2">A2</span>
+                  <span class="course-difficulty">Medium <i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                </div>
+                <div class="course-content">
+                  <div class="course-meta">
+                    <span class="course-author"><i class="fas fa-user"></i> Maria Lopez</span>
+                    <span class="course-rating"><i class="fas fa-star"></i> 4.7 (95)</span>
+                  </div>
+                  <h3 class="course-title">Elementary Spanish</h3>
+                  <p class="course-description">Build foundational Spanish skills for everyday use.</p>
+                  <div class="course-footer">
+                    <div class="course-stats">
+                      <span class="course-stat"><i class="fas fa-video"></i> 12</span>
+                      <span class="course-stat"><i class="fas fa-question-circle"></i> 6</span>
+                    </div>
+                    <span class="course-price">$24.99</span>
+                  </div>
+                </div>
+              </div>
+              <div class="course-card" data-level="b1">
+                <div class="course-image">
+                  <img src="https://via.placeholder.com/300x160" alt="Course Image">
+                  <span class="course-level level-b1">B1</span>
+                  <span class="course-difficulty">Hard <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                </div>
+                <div class="course-content">
+                  <div class="course-meta">
+                    <span class="course-author"><i class="fas fa-user"></i> Ahmed Hassan</span>
+                    <span class="course-rating"><i class="fas fa-star"></i> 4.9 (150)</span>
+                  </div>
+                  <h3 class="course-title">Intermediate Arabic</h3>
+                  <p class="course-description">Enhance your Arabic with advanced conversation skills.</p>
+                  <div class="course-footer">
+                    <div class="course-stats">
+                      <span class="course-stat"><i class="fas fa-video"></i> 15</span>
+                      <span class="course-stat"><i class="fas fa-question-circle"></i> 8</span>
+                    </div>
+                    <span class="course-price">$29.99</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="practice-widget">
+        <div class="practice-header">
+          <h2><span class="widget-header-icon"><i class="fas fa-microphone"></i></span> Practice</h2>
+        </div>
+        <div class="widget-body">
+          <div class="schedule-form">
+            <label for="session-date">Schedule a Session</label>
+            <input type="datetime-local" id="session-date" class="schedule-input">
+            <button class="btn btn-success" onclick="bookSession()">Book Now</button>
+          </div>
+          <div class="tutor-grid">
+            <div class="tutor-card">
+              <h3 class="tutor-name">Emma Brown</h3>
+              <p class="tutor-details">English | 5+ Years</p>
+              <div class="tutor-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+              </div>
+              <button class="btn btn-primary" onclick="connectTutor('Emma Brown')">Connect</button>
+            </div>
+            <div class="tutor-card">
+              <h3 class="tutor-name">Carlos Ruiz</h3>
+              <p class="tutor-details">Spanish | 4+ Years</p>
+              <div class="tutor-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <button class="btn btn-primary" onclick="connectTutor('Carlos Ruiz')">Connect</button>
+            </div>
+            <div class="tutor-card">
+              <h3 class="tutor-name">Ahmed Hassan</h3>
+              <p class="tutor-details">Arabic | 6+ Years</p>
+              <div class="tutor-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <button class="btn btn-primary" onclick="connectTutor('Ahmed Hassan')">Connect</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="rewards-widget">
+        <div class="rewards-header">
+          <h2><span class="widget-header-icon"><i class="fas fa-award"></i></span> Rewards</h2>
+        </div>
+        <div class="widget-body">
+          <div class="rewards-grid">
+            <div class="reward-card unlocked">
+              <span class="reward-icon"><i class="fas fa-trophy"></i></span>
+              <h3 class="reward-title">Beginner Star</h3>
+              <p class="reward-desc">Complete A1 Level</p>
+            </div>
+            <div class="reward-card">
+              <span class="reward-icon"><i class="fas fa-medal"></i></span>
+              <h3 class="reward-title">Conversation Pro</h3>
+              <p class="reward-desc">Complete 5 Practice Sessions</p>
+            </div>
+            <div class="reward-card">
+              <span class="reward-icon"><i class="fas fa-crown"></i></span>
+              <h3 class="reward-title">Fluency Master</h3>
+              <p class="reward-desc">Reach B1 Level</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Profile Section -->
+  <div class="profile-wrapper hidden" id="profile-page">
+    <div class="container">
+      <div class="profile-header">
+        <h2>Your Profile</h2>
+      </div>
+      <form id="profile-form">
+        <div class="form-group">
+          <label for="profile-name">Full Name</label>
+          <input type="text" id="profile-name" class="form-input" value="John Doe" required>
+        </div>
+        <div class="form-group">
+          <label for="profile-email">Email</label>
+          <input type="email" id="profile-email" class="form-input" value="john.doe@example.com" readonly>
+        </div>
+        <div class="form-group">
+          <label for="profile-goal">Learning Goal</label>
+          <input type="text" id="profile-goal" class="form-input" value="Fluent in Spanish in 6 months" required>
+        </div>
+        <div class="profile-actions">
+          <button type="button" class="btn btn-primary" onclick="saveProfile()">Save Changes</button>
+          <button type="button" class="btn btn-outline" onclick="goBack()">Back to Dashboard</button>
+        </div>
+      </form>
+      <div class="settings-section">
+        <h3>Settings</h3>
+        <div class="setting-item">
+          <span class="setting-label">Notification Preferences</span>
+          <label class="switch">
+            <input type="checkbox" id="notifications-toggle">
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="setting-item">
+          <span class="setting-label">Language Preference</span>
+          <select id="language-preference" class="form-input" style="width: 150px;">
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+            <option value="ar">Arabic</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings Page (New) -->
+  <div class="profile-wrapper hidden" id="settings-page">
+    <div class="container">
+      <div class="profile-header">
+        <h2>Settings</h2>
+        <button class="btn btn-outline" onclick="goBack()">Back to Dashboard</button>
+      </div>
+      <form id="settings-form">
+        <div class="form-group">
+          <label for="notification-email">Email Notifications</label>
+          <input type="checkbox" id="notification-email" class="form-input" style="width: auto; margin-right: 1rem;">
+          <label for="notification-email">Enable</label>
+        </div>
+        <div class="form-group">
+          <label for="notification-sms">SMS Notifications</label>
+          <input type="checkbox" id="notification-sms" class="form-input" style="width: auto; margin-right: 1rem;">
+          <label for="notification-sms">Enable</label>
+        </div>
+        <div class="form-group">
+          <label for="default-language">Default Language</label>
+          <select id="default-language" class="form-input">
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+            <option value="ar">Arabic</option>
+          </select>
+        </div>
+        <div class="profile-actions">
+          <button type="button" class="btn btn-primary" onclick="saveSettings()">Save Settings</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Course Modal -->
+  <div class="modal" id="course-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-title"></h2>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc" id="modal-desc"></p>
+        <div class="modal-quiz" id="modal-quiz">
+          <div class="quiz-option" onclick="selectOption(this, 'a')">Option A</div>
+          <div class="quiz-option" onclick="selectOption(this, 'b')">Option B</div>
+          <div class="quiz-option" onclick="selectOption(this, 'c')">Option C</div>
+          <button class="btn btn-success" onclick="submitQuiz()" style="margin-top: 1rem;">Submit</button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" onclick="startCourse()">Start Course</button>
+        <button class="btn btn-outline" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // DOM Elements
+    const loginPage = document.getElementById('login-page');
+    const mainPage = document.getElementById('main-page');
+    const profilePage = document.getElementById('profile-page');
+    const settingsPage = document.getElementById('settings-page');
+    const navbar = document.getElementById('navbar');
+    const userDropdown = document.getElementById('user-dropdown');
+    const themeToggle = document.getElementById('theme-toggle');
+    const courseModal = document.getElementById('course-modal');
+    const courseGrid = document.getElementById('course-grid');
+
+    // Initial Setup
+    window.onload = () => {
+      loginPage.classList.remove('hidden');
+      mainPage.classList.add('hidden');
+      profilePage.classList.add('hidden');
+      settingsPage.classList.add('hidden');
+      courseModal.classList.add('hidden');
+      animateProgress();
+      loadProgress();
+      checkScroll();
+      window.addEventListener('scroll', checkScroll);
+      document.addEventListener('click', (e) => {
+        if (!userDropdown.contains(e.target) && !e.target.classList.contains('user-avatar')) {
+          userDropdown.classList.remove('active');
+        }
+      });
+    };
+
+    // Scroll Navbar
+    function checkScroll() {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    }
+
+    // Login Logic
+    document.getElementById('login-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      if (email === 'test@example.com' && password === 'password123') {
+        transitionPage(loginPage, mainPage);
+        showNotification('Logged in successfully!', 'success');
+        loadUserData(email);
+      } else {
+        showNotification('Invalid credentials. Use: test@example.com / password123', 'error');
+      }
+    });
+
+    // Password Toggle
+    function togglePassword() {
+      const password = document.getElementById('password');
+      const icon = document.querySelector('.password-toggle i');
+      if (password.type === 'password') {
+        password.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      } else {
+        password.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      }
+    }
+
+    // Navigation
+    document.getElementById('profile-link').addEventListener('click', (e) => {
+      e.preventDefault();
+      transitionPage(mainPage, profilePage);
+    });
+
+    document.getElementById('logout-link').addEventListener('click', (e) => {
+      e.preventDefault();
+      transitionPage(mainPage, loginPage);
+      document.getElementById('login-form').reset();
+      localStorage.removeItem('userProgress');
+    });
+
+    function goBack() {
+      transitionPage(profilePage, mainPage);
+    }
+
+    // User Menu
+    function toggleUserMenu() {
+      userDropdown.classList.toggle('active');
+    }
+
+    // Theme Toggle
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const toggleSwitch = themeToggle.querySelector('.toggle-switch');
+      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+    });
+
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark-mode');
+    }
+
+    // Transition Animation
+    function transitionPage(from, to) {
+      from.style.opacity = '0';
+      from.style.transition = 'opacity 0.5s ease';
+      setTimeout(() => {
+        from.classList.add('hidden');
+        to.classList.remove('hidden');
+        to.style.opacity = '0';
+        setTimeout(() => {
+          to.style.opacity = '1';
+          animateProgress();
+        }, 50);
+      }, 500);
+    }
+
+    // Progress Animation
+    function animateProgress() {
+      document.querySelectorAll('.progress-fill').forEach(bar => {
+        const savedWidth = localStorage.getItem(`progress-${bar.classList[1]}`);
+        bar.style.width = savedWidth || '0';
+        setTimeout(() => bar.style.width = savedWidth || bar.getAttribute('data-width') || bar.style.width, 100);
+      });
+    }
+
+    // Load and Save Progress
+    function loadProgress() {
+      const progress = JSON.parse(localStorage.getItem('userProgress')) || {
+        a1: 80,
+        a2: 50,
+        b1: 20
+      };
+      updateProgressBar('a1', progress.a1);
+      updateProgressBar('a2', progress.a2);
+      updateProgressBar('b1', progress.b1);
+    }
+
+    function updateProgressBar(level, percentage) {
+      const bar = document.querySelector(`.progress-fill.fill-${level}`);
+      if (bar) {
+        bar.style.width = `${percentage}%`;
+        const progressData = JSON.parse(localStorage.getItem('userProgress')) || {};
+        progressData[level] = percentage;
+        localStorage.setItem('userProgress', JSON.stringify(progressData));
+      }
+    }
+
+    function loadUserData(email) {
+      const user = JSON.parse(localStorage.getItem('user')) || { name: 'John Doe', email: email, goal: 'Fluent in Spanish in 6 months' };
+      document.getElementById('profile-name').value = user.name;
+      document.getElementById('profile-email').value = user.email;
+      document.getElementById('profile-goal').value = user.goal;
+      document.querySelector('.welcome-banner h2').textContent = `Welcome Back, ${user.name.split(' ')[0]}!`;
+    }
+
+    // Course Modal
+    function openCourseModal(course) {
+      const courses = {
+        'a1': { title: 'A1 - Beginner', desc: 'Learn basic vocabulary and phrases with 10 interactive lessons.', quiz: { correct: 'a', options: ['Basic greetings', 'Advanced grammar', 'Complex sentences'] } },
+        'a2': { title: 'A2 - Elementary', desc: 'Build conversation skills with 12 lessons and exercises.', quiz: { correct: 'b', options: ['Simple phrases', 'Daily conversations', 'Business terms'] } },
+        'b1': { title: 'B1 - Intermediate', desc: 'Master communication with 15 advanced lessons.', quiz: { correct: 'c', options: ['Basic words', 'Intermediate dialogue', 'Fluent speech'] } }
+      };
+      const courseData = courses[course];
+      document.getElementById('modal-title').textContent = courseData.title;
+      document.getElementById('modal-desc').textContent = courseData.desc;
+      const quizDiv = document.getElementById('modal-quiz');
+      quizDiv.innerHTML = '';
+      courseData.quiz.options.forEach((option, index) => {
+        const opt = document.createElement('div');
+        opt.className = 'quiz-option';
+        opt.textContent = option;
+        opt.setAttribute('data-value', String.fromCharCode(97 + index));
+        opt.onclick = () => selectOption(opt, String.fromCharCode(97 + index));
+        quizDiv.appendChild(opt);
+      });
+      courseModal.classList.remove('hidden');
+    }
+
+    let selectedAnswer = null;
+    function selectOption(element, value) {
+      document.querySelectorAll('.quiz-option').forEach(opt => opt.classList.remove('selected'));
+      element.classList.add('selected');
+      selectedAnswer = value;
+    }
+
+    function submitQuiz() {
+      const course = document.getElementById('modal-title').textContent.split(' - ')[0].toLowerCase();
+      const courses = {
+        'a1': { quiz: { correct: 'a' } },
+        'a2': { quiz: { correct: 'b' } },
+        'b1': { quiz: { correct: 'c' } }
+      };
+      if (selectedAnswer === courses[course].quiz.correct) {
+        showNotification('Correct answer! +10% progress.', 'success');
+        updateProgress(course, 10);
+      } else {
+        showNotification('Wrong answer. Try again!', 'error');
+      }
+    }
+
+    function startCourse() {
+      const level = document.getElementById('modal-title').textContent.split(' - ')[0].toLowerCase();
+      showNotification(`Starting ${level} course!`, 'success');
+      updateProgress(level, 10);
+      closeModal();
+    }
+
+    function closeModal() {
+      courseModal.classList.add('hidden');
+      selectedAnswer = null;
+    }
+
+    // Course Filtering
+    function filterCourses(level) {
+      const filters = document.querySelectorAll('.course-filter');
+      filters.forEach(filter => filter.classList.remove('active'));
+      event.target.classList.add('active');
+
+      const cards = document.querySelectorAll('.course-card');
+      cards.forEach(card => {
+        if (level === 'all' || card.getAttribute('data-level') === level) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    // Progress Update
+    function updateProgress(level, points) {
+      const progressItems = {
+        'a1': document.querySelector('.progress-fill.fill-a1'),
+        'a2': document.querySelector('.progress-fill.fill-a2'),
+        'b1': document.querySelector('.progress-fill.fill-b1')
+      };
+      let currentWidth = parseInt(progressItems[level].style.width) || 0;
+      let newWidth = Math.min(currentWidth + points, 100);
+      progressItems[level].style.width = `${newWidth}%`;
+      const progressData = JSON.parse(localStorage.getItem('userProgress')) || {};
+      progressData[level] = newWidth;
+      localStorage.setItem('userProgress', JSON.stringify(progressData));
+      if (newWidth === 100) {
+        showNotification(`Congratulations! You completed ${level.toUpperCase()} level!`, 'success');
+        unlockReward(level);
+      }
+    }
+
+    // Reward System
+    function unlockReward(level) {
+      const rewards = {
+        'a1': document.querySelector('.reward-card:nth-child(1)'),
+        'a2': document.querySelector('.reward-card:nth-child(2)'),
+        'b1': document.querySelector('.reward-card:nth-child(3)')
+      };
+      const reward = rewards[level];
+      if (reward && !reward.classList.contains('unlocked')) {
+        reward.classList.add('unlocked');
+        showNotification(`New reward unlocked: ${reward.querySelector('.reward-title').textContent}!`, 'success');
+      }
+    }
+
+    // Practice Functions
+    function bookSession() {
+      const date = document.getElementById('session-date').value;
+      if (date) {
+        const formatted = new Date(date).toLocaleString();
+        showNotification(`Session booked for ${formatted}`, 'success');
+        updateProgress('a1', 5); // Simulate progress from practice
+      } else {
+        showNotification('Please select a date and time!', 'error');
+      }
+    }
+
+    function connectTutor(name) {
+      showNotification(`Connecting with ${name}...`, 'success');
+      updateProgress('a1', 5); // Simulate progress from practice
+    }
+
+    // Profile Save
+    function saveProfile() {
+      const name = document.getElementById('profile-name').value;
+      const goal = document.getElementById('profile-goal').value;
+      const user = { name, email: document.getElementById('profile-email').value, goal };
+      localStorage.setItem('user', JSON.stringify(user));
+      showNotification(`Profile updated for ${name} with goal: ${goal}`, 'success');
+      document.querySelector('.welcome-banner h2').textContent = `Welcome Back, ${name.split(' ')[0]}!`;
+    }
+
+    // Settings Save
+    function saveSettings() {
+      const emailNotif = document.getElementById('notification-email').checked;
+      const smsNotif = document.getElementById('notification-sms').checked;
+      const language = document.getElementById('default-language').value;
+      localStorage.setItem('settings', JSON.stringify({ emailNotif, smsNotif, language }));
+      showNotification('Settings saved successfully!', 'success');
+    }
+
+// Notification System
+function showNotification(message, type = 'success') {
+    const notif = document.createElement('div');
+    notif.style.cssText = `
+        position: fixed; bottom: 1rem; right: 1rem; padding: 1rem 1.5rem;
+        border-radius: var(--radius-sm); color: #fff; box-shadow: var(--shadow);
+        background: ${type === 'error' ? 'var(--danger)' : 'var(--success)'};
+        animation: slideIn 0.5s ease-out; z-index: 2000;
+    `;
+
+    notif.textContent = message;
+    document.body.appendChild(notif);
+
+    setTimeout(() => {
+        notif.style.opacity = '0';
+        setTimeout(() => notif.remove(), 300);
+    }, 3000);
+}
+
+// Forgot Password Event Listener
+document.getElementById('forgot-password-link').addEventListener('click', (e) => {
+    e.preventDefault();
+    showNotification('Password reset link sent to your email.');
+});
+
+
+    // Load Settings
+    function loadSettings() {
+      const settings = JSON.parse(localStorage.getItem('settings')) || { emailNotif: true, smsNotif: false, language: 'en' };
+      document.getElementById('notification-email').checked = settings.emailNotif;
+      document.getElementById('notification-sms').checked = settings.smsNotif;
+      document.getElementById('default-language').value = settings.language;
+      document.getElementById('language-preference').value = settings.language;
+    }
+
+    // Initial Load
+    loadUserData('john.doe@example.com');
+    loadSettings();
+  </script>
+</body>
+</html>
